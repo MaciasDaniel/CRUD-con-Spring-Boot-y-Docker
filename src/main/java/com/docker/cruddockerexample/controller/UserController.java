@@ -65,7 +65,7 @@ public class UserController {
         }
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") int id, @RequestBody User user) {
         User userUpdated = userService.getUserById(id).get();
         userUpdated.setId(user.getId());
@@ -76,7 +76,7 @@ public class UserController {
         return new ResponseEntity<>(currentUser, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable("id") int id) {
         boolean ok = userService.deleteUserById(id);
         if (ok) {
